@@ -22,9 +22,14 @@ public class MyTwitterApplication {
         try {
             User user = twitter.showUser(userInputString);
             System.out.println(user.getFollowersCount());
-            List<Status> statuses = twitter.getUserTimeline(user.getId());
+            List<Status> statuses = twitter.getHomeTimeline();
             //Your code goes here
-
+            System.out.println("Show home time line.");
+            for (Status status : statuses)
+            	{
+            System.out.println(status.getUser().getName() + ":" + 
+            status.getText());
+		}
         } catch (TwitterException tExp) {
             System.out.println("Twitter error :" + tExp.getMessage());
         }
